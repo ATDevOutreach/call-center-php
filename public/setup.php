@@ -129,19 +129,17 @@ function support()
 	$language = $details["language"];
 
 	$text = "Your call is being forwarded to a support agent. Note that this call may be recorded.";
-	$phone_string = $_ENV['SUPPORT_PHONES_ENG'];
+	$phoneNumbers = $_ENV['SUPPORT_PHONES_ENG'];
 
 	if ($language == "pidgin") {
 		$text = "We dey connect you to one of our support people. Know say we dey record this call.";
-		$phone_string = $_ENV['SUPPORT_PHONES_PNG'];
+		$phoneNumbers = $_ENV['SUPPORT_PHONES_PNG'];
 	}
-
-	$phoneNumbers = explode(",", $phone_string);
 
 	$response .= '<?xml version="1.0" encoding="UTF-8"?>
 		<Response>
 		  <Say voice="man" playBeep="true">'.$text.'</Say>
-		  <Dial phoneNumbers="'.implode(",", $phoneNumbers).'" record="true" sequential="false"/>
+		  <Dial phoneNumbers="'.$phoneNumbers.'" record="true" sequential="false"/>
 		</Response>';
 
 	return $response;
@@ -154,19 +152,17 @@ function sales()
 	$language = $details["language"];
 
 	$text = "Your call is being forwarded to a sales agent. Note that this call may be recorded.";
-	$phone_string = $_ENV['SALES_PHONES_ENG'];
+	$phoneNumbers = $_ENV['SALES_PHONES_ENG'];
 
 	if ($language == "pidgin") {
 		$text = "We dey connect you to one of our sales people. Know say we dey record this call.";
-		$phone_string = $_ENV['SALES_PHONES_PNG'];
+		$phoneNumbers = $_ENV['SALES_PHONES_PNG'];
 	}
-
-	$phoneNumbers = explode(",", $phone_string);
 
 	$response .= '<?xml version="1.0" encoding="UTF-8"?>
 		<Response>
 		  <Say voice="man" playBeep="true">'.$text.'</Say>
-		  <Dial phoneNumbers="'.implode(",", $phoneNumbers).'" record="true" sequential="false"/>
+		  <Dial phoneNumbers="'.$phoneNumbers.'" record="true" sequential="false"/>
 		</Response>';
 
 	return $response;
